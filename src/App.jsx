@@ -1,11 +1,10 @@
 
-import reset from 'styled-reset';
+import { normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components';
-import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
 import Layout from './components/Layout';
 
 const GlobalStyle = createGlobalStyle`
-  ${reset}
+  ${normalize}
 
   html {
     box-sizing: border-box;
@@ -20,9 +19,6 @@ const GlobalStyle = createGlobalStyle`
 `
 
 function App() {
-  const { data, isLoading } = useFeaturedBanners();
-  console.log(data, isLoading);
-
   return (
     <>
       <GlobalStyle />

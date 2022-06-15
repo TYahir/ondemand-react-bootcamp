@@ -1,7 +1,7 @@
 
 import styled from 'styled-components';
 
-const StyledTextInput = styled.input`
+const StyledTextField = styled.input`
     border: 0 none;
     border-radius: 25px;
     padding: .5em 1em;
@@ -18,9 +18,9 @@ const StyledTextInput = styled.input`
     }
 `;
 
-function Input({ type = 'text', placeholder = '', value = '', onChange = () => {}}) {
+function TextField({ type = 'text', placeholder = '', value = '', onChange = () => {}}) {
     return (
-        <StyledTextInput
+        <StyledTextField
             type={type}
             placeholder={placeholder}
             value={value}
@@ -29,4 +29,4 @@ function Input({ type = 'text', placeholder = '', value = '', onChange = () => {
     );
 }
 
-export default Input;
+export default TextField;

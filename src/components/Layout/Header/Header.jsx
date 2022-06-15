@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { IoStorefrontOutline } from "react-icons/io5";
-import SearchInput from '../../shared/SearchInput';
+import SearchField from '../../shared/SearchField';
 import Cart from '../../Cart/Cart';
 
 const StyledHeader = styled.header`
@@ -32,7 +32,7 @@ function Header() {
                 <IoStorefrontOutline />
                <h1>The WizeStore</h1>
             </Logo>
-            <SearchInput />
+            <SearchField />
             <Cart />
         </StyledHeader>
         
