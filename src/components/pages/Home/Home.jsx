@@ -1,3 +1,5 @@
+import CategoriesGrid from "../../Categories/CategoriesGrid";
+import ProductGrid from "../../Products/ProductGrid";
 import Featured from "./Featured";
 
 function Home() {
@@ -5,6 +7,8 @@ function Home() {
     return (
         <>
             <Featured />
+            <CategoriesGrid title="Categories"/>
+            <ProductGrid title="Featured products" />
         </>
     );
 }

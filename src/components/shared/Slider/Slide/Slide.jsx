@@ -19,7 +19,7 @@ const StyledSlide = styled.div`
         padding: .5em;
         transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
         opacity: ${props => props.active ? 1 : 0};
-        box-shadow: 5px 6px 0px rgba(0,0,0, 0.5);
+        word-break: break-word;
     }
 
     h1 {

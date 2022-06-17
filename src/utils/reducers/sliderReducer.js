@@ -11,7 +11,6 @@ export function sliderReducer(state, action) {
   switch (action.type) {
     case sliderActions.PROGRESS:
     case sliderActions.NEXT:
-        console.log('changing slide');
         return {
             ...state,
             isPlaying: action.type === sliderActions.PROGRESS,

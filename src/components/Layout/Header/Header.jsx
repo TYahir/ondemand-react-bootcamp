@@ -8,6 +8,10 @@ const StyledHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     padding: 0.5em;
+    top: 0;
+    background-color: white;
+    z-index: 2;
+    position: sticky;
 `;
 
 const Logo = styled.div`
