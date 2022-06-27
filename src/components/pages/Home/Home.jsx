@@ -1,14 +1,24 @@
+import { useGetFromAPI } from "../../../utils/hooks/useGetFromAPI";
 import CategoriesGrid from "../../Categories/CategoriesGrid";
 import ProductGrid from "../../Products/ProductGrid";
 import Featured from "./Featured";
 
 function Home() {
+    const [ productsData, productsLoading ] = useGetFromAPI("mocks/en-us/featured-products.json");
 
     return (
         <>
             <Featured />
             <CategoriesGrid title="Categories"/>
-            <ProductGrid title="Featured products" />
+            {
+                productsLoading ? 
+                    <span>Loading...</span> :
+                    <ProductGrid
+                        title="Featured products"
+                        products={productsData?.results}
+                        filters={[]}
+                    />
+            }
         </>
     );
 }

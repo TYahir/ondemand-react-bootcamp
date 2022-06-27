@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
 export function useGetFromAPI(url, options) {
-    const [data, setData] = useState({});
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [ data, setData ] = useState({});
+    const [ loading, setLoading ] = useState(false);
+    const [ error, setError ] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
@@ -19,7 +19,7 @@ export function useGetFromAPI(url, options) {
             }
         }
         fetchData();
-    },[url, options]);
+    }, [url, options]);
 
     return [ data, loading, error ];
 }

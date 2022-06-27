@@ -43,6 +43,7 @@ const StyledProductItem = styled.div`
             margin-bottom: .5em;
             word-break: break-word;
             transition: color 200ms ease-in-out;
+            max-width: 10em;
         }
 
         .product-price {

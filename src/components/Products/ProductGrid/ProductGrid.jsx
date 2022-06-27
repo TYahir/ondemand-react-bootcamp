@@ -1,29 +1,60 @@
-import { useState, useEffect } from "react";
-import { useGetFromAPI } from "../../../utils/hooks/useGetFromAPI";
+import { useContext, useMemo } from "react";
+import styled from "styled-components";
+import { RouteContext } from "../../../App";
+import { routes } from "../../../utils/constants";
 import Grid from "../../shared/Grid";
+import Pagination from "../../shared/Pagination";
+import ThemedLink from "../../shared/ThemedLink";
 import ProductItem from "../ProductItem";
 
-function ProductGrid({ title }) {
-    const [ data, loading ] = useGetFromAPI("mocks/en-us/featured-products.json");
-    const [ products, setProducts ] = useState([]);
+const StyledProductGrid = styled.div`
+    flex-grow: 1;
+`;
 
-    useEffect(() => {
-        if (data) {
-            setProducts(data.results);
+function ProductGrid({ title, filters = [], products = [], ...props }) {
+    const [ route, setRoute ] = useContext(RouteContext);
+
+    const filteredProducts = useMemo(() => {
+        let filteredList = [];
+        if (filters.length === 0) {
+            filteredList = [...products];
+        } else {
+            // Filters by any field
+            filteredList = products.filter((product) => {
+                let hasFilter = false;
+                for(let i = 0; i < filters.length; i++) {
+                    hasFilter = product.data[filters[i].type].id === filters[i].id;
+                    if (hasFilter) break;
+                };
+                return hasFilter;
+            });
         }
-    }, [data]);
+        return [ ...filteredList ]
+    }, [filters, products]);
 
     return ( 
-        <section>
-        <h2>{title}</h2>
-            {
-                loading ?
-                    <span>Loading ...</span> :
-                    <Grid>
-                        { products.map(product => <ProductItem product={product} key={product.id} />) }
-                    </Grid>
-            }
-        </section>
+        <StyledProductGrid {...props}>
+            <h2>{title}</h2>
+            <Grid>
+                { filteredProducts.length ?
+                    filteredProducts.map(filteredProduct => <ProductItem product={filteredProduct} key={filteredProduct.id} />) :
+                    <h3>No products to show at the moment.</h3>
+                }
+                {
+                    route === routes.PRODUCTS ?
+                    <Pagination pageCount={3} /> :
+                    <ThemedLink
+                        as="button"
+                        style={{
+                            placeSelf: 'center'
+                        }}
+                        onClick={() => setRoute(routes.PRODUCTS)}
+                    >
+                        View all products
+                    </ThemedLink>
+                }
+            </Grid>
+        </StyledProductGrid>
     );
 }
 

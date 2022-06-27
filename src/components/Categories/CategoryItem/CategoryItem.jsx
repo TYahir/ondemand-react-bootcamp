@@ -32,6 +32,8 @@ const StyledCategoryItem = styled.div`
         position: absolute;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
         img {
             object-fit: cover;
             width: 100%;
@@ -41,9 +43,9 @@ const StyledCategoryItem = styled.div`
     }
 `;
 
-function CategoryItem({ category }) {
+function CategoryItem({ category, ...props }) {
     return (
-        <StyledCategoryItem>
+        <StyledCategoryItem {...props}>
             <div className="category-image">
                 <img src={category.data.main_image.url} alt={category.data.name} />
             </div>

@@ -1,7 +1,8 @@
-
+import { createContext, useState } from 'react';
 import { normalize } from 'styled-normalize'
 import { createGlobalStyle } from 'styled-components';
 import Layout from './components/Layout';
+import { routes } from './utils/constants';
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -18,11 +19,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+export const RouteContext = createContext();
+
 function App() {
+  const [route, setRoute] = useState(routes.HOME);
+
   return (
     <>
       <GlobalStyle />
-      <Layout />
+      <RouteContext.Provider value={[route, setRoute]}>
+        <Layout />
+      </RouteContext.Provider>  
     </>
   );
 }

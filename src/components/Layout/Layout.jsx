@@ -1,5 +1,9 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { RouteContext } from '../../App';
+import { routes } from '../../utils/constants';
 import Home from '../pages/Home';
+import ProductList from '../pages/ProductList';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
@@ -17,11 +21,14 @@ const StyledLayout = styled.div`
 `;
 
 function Layout() {
+    const [route] = useContext(RouteContext);
+    
     return (
         <StyledLayout>
            <Header />
            <Content>
-                <Home />
+                {route === routes.HOME && <Home /> }
+                {route === routes.PRODUCTS && <ProductList /> }
            </Content>
            <Footer />
         </StyledLayout>
