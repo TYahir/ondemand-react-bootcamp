@@ -1,4 +1,4 @@
-import { useContext, useMemo } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { RouteContext } from "../../../App";
 import { routes } from "../../../utils/constants";
@@ -13,6 +13,16 @@ const StyledProductGrid = styled.div`
 
 function ProductGrid({ title, filters = [], products = [], ...props }) {
     const [ route, setRoute ] = useContext(RouteContext);
+
+    // for the deliverable 2 bonus
+    const [ bonusLoading, setBonusLoading ] = useState(false);
+
+    useEffect(() => {
+        setBonusLoading(true);
+        setTimeout(() => {
+            setBonusLoading(false);
+        }, 2000);
+    }, []);
 
     const filteredProducts = useMemo(() => {
         let filteredList = [];
@@ -35,6 +45,9 @@ function ProductGrid({ title, filters = [], products = [], ...props }) {
     return ( 
         <StyledProductGrid {...props}>
             <h2>{title}</h2>
+            {
+            bonusLoading ?
+            <span>Loading products ... </span> :
             <Grid>
                 { filteredProducts.length ?
                     filteredProducts.map(filteredProduct => <ProductItem product={filteredProduct} key={filteredProduct.id} />) :
@@ -54,6 +67,7 @@ function ProductGrid({ title, filters = [], products = [], ...props }) {
                     </ThemedLink>
                 }
             </Grid>
+            }
         </StyledProductGrid>
     );
 }
