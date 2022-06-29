@@ -1,4 +1,5 @@
 import { StyledCategoryItem } from "./CategoryItem.styled";
+import PropTypes from 'prop-types';
 
 function CategoryItem({ category, ...props }) {
     return (
@@ -10,5 +11,9 @@ function CategoryItem({ category, ...props }) {
         </StyledCategoryItem>
     );
 }
+
+CategoryItem.propTypes = {
+    category: PropTypes.object.isRequired,
+};
 
 export default CategoryItem;

@@ -1,4 +1,5 @@
 import { PaginationButton, StyledNavigation } from "./Pagination.styled";
+import PropTypes from 'prop-types';
 
 function Pagination({
         pageCount,
@@ -21,6 +22,15 @@ function Pagination({
             { activeIndex < pageCount - 1 && <PaginationButton>{lastLabel}</PaginationButton> }
         </StyledNavigation>
     );
+}
+
+Pagination.propTypes = {
+    pageCount: PropTypes.number,
+    activeIndex: PropTypes.number,
+    firstLabel: PropTypes.string,
+    prevLabel: PropTypes.string,
+    nextLabel: PropTypes.string,
+    lastLabel: PropTypes.string,
 }
 
 export default Pagination;

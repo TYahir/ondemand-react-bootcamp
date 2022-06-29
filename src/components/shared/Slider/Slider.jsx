@@ -2,8 +2,9 @@ import { useReducer, useEffect } from 'react';
 import { sliderActions, sliderReducer } from '../../../utils/reducers/sliderReducer';
 import Slide from './Slide/Slide';
 import { InnerSlider, SliderContainer } from './Slider.styled';
+import PropTypes from 'prop-types';
 
-function Slider({ items = [], auto = true, speed = 2000, infinite = true, width, height, ...props }) {
+function Slider({ items = [], auto = true, speed = 2000, infinite = true, width, height }) {
 
     const [state, dispatch] = useReducer(sliderReducer, {
         currentIndex: 0,
@@ -34,6 +35,15 @@ function Slider({ items = [], auto = true, speed = 2000, infinite = true, width,
             </InnerSlider>
         </SliderContainer>
      );
+}
+
+Slider.propTypes = {
+    items: PropTypes.array,
+    auto: PropTypes.bool,
+    speed: PropTypes.number,
+    infinite: PropTypes.bool,
+    width: PropTypes.string,
+    height: PropTypes.string,
 }
 
 export default Slider;

@@ -1,4 +1,5 @@
 import { StyledSlide } from "./Slide.styled";
+import PropTypes from 'prop-types';
 
 function Slide({ image, title, text, active }) {
     return (
@@ -8,6 +9,13 @@ function Slide({ image, title, text, active }) {
             <p>{text}</p>
         </StyledSlide>
     );
+}
+
+Slide.propTypes = {
+    image: PropTypes.string,
+    title: PropTypes.string,
+    text: PropTypes.string,
+    active: PropTypes.bool,
 }
 
 export default Slide;

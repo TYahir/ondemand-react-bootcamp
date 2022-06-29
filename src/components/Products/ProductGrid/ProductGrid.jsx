@@ -6,6 +6,7 @@ import Grid from "../../shared/Grid";
 import Pagination from "../../shared/Pagination";
 import ThemedLink from "../../shared/ThemedLink";
 import ProductItem from "../ProductItem";
+import PropTypes from 'prop-types';
 
 const StyledProductGrid = styled.div`
     flex-grow: 1;
@@ -19,9 +20,10 @@ function ProductGrid({ title, filters = [], products = [], ...props }) {
 
     useEffect(() => {
         setBonusLoading(true);
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setBonusLoading(false);
         }, 2000);
+        return () => clearTimeout(timeout);
     }, []);
 
     const filteredProducts = useMemo(() => {
@@ -70,6 +72,12 @@ function ProductGrid({ title, filters = [], products = [], ...props }) {
             }
         </StyledProductGrid>
     );
+}
+
+ProductGrid.propTypes = {
+    title: PropTypes.string,
+    filters: PropTypes.array,
+    products: PropTypes.array,
 }
 
 export default ProductGrid;

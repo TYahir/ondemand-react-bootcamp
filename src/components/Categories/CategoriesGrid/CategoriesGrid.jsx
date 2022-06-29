@@ -1,6 +1,7 @@
 import { useGetFromAPI } from "../../../utils/hooks/useGetFromAPI";
 import Grid from "../../shared/Grid";
 import CategoryItem from "../CategoryItem";
+import PropTypes from 'prop-types';
 
 function CategoriesGrid({ title }) {
 
@@ -19,5 +20,9 @@ function CategoriesGrid({ title }) {
         </section>
     );
 }
+
+CategoriesGrid.propTypes = {
+    title: PropTypes.string
+};
 
 export default CategoriesGrid;

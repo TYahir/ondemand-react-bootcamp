@@ -1,26 +1,9 @@
+import { useState } from "react";
+import PropTypes from 'prop-types';
 import { IoChevronDown } from "react-icons/io5";
 import { useGetFromAPI } from "../../../../utils/hooks/useGetFromAPI";
-import { useState } from "react";
-import { StyledFilters, StyledFilterItem, FiltersContainer } from './ProductFilters.styled'
-
-function FilterItem({ checked, label, id, handleChange }) {
-    return ( 
-        <StyledFilterItem>
-            <label
-                htmlFor={id}
-            >
-                {label}
-            </label>
-            <input
-                type="checkbox"
-                id={id}
-                checked={checked}
-                name={`filter-${id}`}
-                onChange={handleChange}
-            />
-        </StyledFilterItem>
-    );
-}
+import { StyledFilters, FiltersContainer } from './ProductFilters.styled'
+import FilterItem from "./FilterItem";
 
 function ProductFilters({ filters = [], setFilters }) {
     const [ categoriesData, loadingCategories ] = useGetFromAPI("mocks/en-us/product-categories.json");
@@ -66,6 +49,11 @@ function ProductFilters({ filters = [], setFilters }) {
             </FiltersContainer> 
         </StyledFilters>
      );
+}
+
+ProductFilters.propTypes = {
+    filters: PropTypes.array,
+    setFilters: PropTypes.func.isRequired,
 }
 
 export default ProductFilters;

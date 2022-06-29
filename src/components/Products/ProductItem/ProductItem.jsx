@@ -1,4 +1,5 @@
 import { StyledProductItem } from "./ProductItem.styled";
+import PropTypes from 'prop-types';
 
 function ProductItem({ product }) {
     return (
@@ -15,6 +16,10 @@ function ProductItem({ product }) {
             </div>
         </StyledProductItem>
     );
+}
+
+ProductItem.propTypes = {
+    product: PropTypes.object,
 }
 
 export default ProductItem;
