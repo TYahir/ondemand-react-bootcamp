@@ -1,25 +1,10 @@
 import { useReducer, useEffect } from 'react';
-import styled from 'styled-components';
 import { sliderActions, sliderReducer } from '../../../utils/reducers/sliderReducer';
 import Slide from './Slide/Slide';
+import { InnerSlider, SliderContainer } from './Slider.styled';
+import PropTypes from 'prop-types';
 
-const SliderContainer = styled.div`
-    width: ${props => props.width || '100%'};
-    height: ${props => props.height || '100%'};
-    overflow-x: hidden;
-`;
-
-const InnerSlider = styled.div`
-    transition: transform 500ms ease-in-out;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: 100%;
-    transform: ${props => `translateX(${props.translateX}%)`};
-`;
-
-function Slider({ items = [], auto = true, speed = 2000, infinite = true, width, height, ...props }) {
+function Slider({ items = [], auto = true, speed = 2000, infinite = true, width, height }) {
 
     const [state, dispatch] = useReducer(sliderReducer, {
         currentIndex: 0,
@@ -50,6 +35,15 @@ function Slider({ items = [], auto = true, speed = 2000, infinite = true, width,
             </InnerSlider>
         </SliderContainer>
      );
+}
+
+Slider.propTypes = {
+    items: PropTypes.array,
+    auto: PropTypes.bool,
+    speed: PropTypes.number,
+    infinite: PropTypes.bool,
+    width: PropTypes.string,
+    height: PropTypes.string,
 }
 
 export default Slider;
