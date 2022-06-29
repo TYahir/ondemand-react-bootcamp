@@ -1,16 +1,10 @@
 
 
 import { useState } from "react";
-import styled from "styled-components";
 import { useGetFromAPI } from "../../../utils/hooks/useGetFromAPI";
 import ProductGrid from "../../Products/ProductGrid";
 import ProductFilters from "./ProductFilters";
-
-const StyledProductList = styled.section`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`;
+import { StyledProductList } from "./ProductList.styled";
 
 function ProductList() {
     const [ productsData, productsLoading ] = useGetFromAPI("mocks/en-us/products.json");

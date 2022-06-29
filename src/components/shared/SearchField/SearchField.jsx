@@ -1,18 +1,11 @@
-import styled from 'styled-components';
 import TextField from '../TextField';
-
-const StyledForm = styled.form`
-    margin: 0;
-    padding: 0;
-    width: calc(100% - 8em);
-    max-width: 400px;
-`;
+import { StyledSearch } from './SearchField.styled';
 
 function SearchField() {
     return ( 
-        <StyledForm>
+        <StyledSearch>
             <TextField placeholder="Search" />
-        </StyledForm>
+        </StyledSearch>
      );
 }
 

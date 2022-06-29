@@ -1,23 +1,7 @@
 import { createContext, useState } from 'react';
-import { normalize } from 'styled-normalize'
-import { createGlobalStyle } from 'styled-components';
+import { GlobalStyle } from './App.styled';
 import Layout from './components/Layout';
 import { routes } from './utils/constants';
-
-const GlobalStyle = createGlobalStyle`
-  ${normalize}
-
-  html {
-    box-sizing: border-box;
-  }
-  *, *:before, *:after {
-    box-sizing: inherit;
-  }
-
-  body {
-    font-family: 'Nunito Sans', sans-serif;
-  }
-`
 
 export const RouteContext = createContext();
 
